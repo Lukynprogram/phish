@@ -13,14 +13,12 @@ message["To"] = receiver_email
 
 #Obsah zpravy
 text = f"""\
-Dobrý den, Olivere,
+Dobrý den, 
 
-timto emailem vam oznamuji vypoved s okamzitou platnosti.
+toto je obsah podvrženého mailu.
 
-Děkuji
-
-Katka Stejskalová
-HR Manager
+Přeji krásný zbytek dne,
+LJ.
 """
 
 part1 = MIMEText(text, "plain")
@@ -28,7 +26,7 @@ message.attach(part1)
 
 context = ssl.create_default_context()
 try:
-        server = smtplib.SMTP_SSL('mail.smtp2go.com', 465)
+        server = smtplib.SMTP_SSL('VASSMTPSERVER', ČÍSLOPORTU)
         server.ehlo()
         server.login("login", "hesla")
         server.sendmail(sent_from, receiver_email, message.as_string())
